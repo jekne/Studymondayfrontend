@@ -10,10 +10,14 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   console.log("form state", email, password);
 
+  const onFormSubmit = (event) => {
+    event.preventDefault();
+    console.log("hey i am submitinggg", email, password);
+  };
   return (
     <div>
       <h1>This is my login page</h1>
-      <form>
+      <form onSubmit={onFormSubmit}>
         <div>
           <label>EMAIL</label>
           <input type="email" onChange={(e) => setEmail(e.target.value)} />
@@ -25,6 +29,7 @@ const LoginPage = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
+        <button type="submit">SUBMIT</button>
       </form>
     </div>
   );
