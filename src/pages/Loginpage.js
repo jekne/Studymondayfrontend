@@ -10,9 +10,18 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   console.log("form state", email, password);
 
-  const onFormSubmit = (event) => {
+  const onFormSubmit = async (event) => {
     event.preventDefault();
-    console.log("hey i am submitinggg", email, password);
+    console.log("hey i am submitingggg", email, password);
+    try {
+      const response = await axios.post("http://localhost:4000/auth/login", {
+        email,
+        password: password,
+      });
+      console.log("this is my response", response);
+    } catch (e) {
+      console.log(e.message);
+    }
   };
   return (
     <div>
