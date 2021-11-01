@@ -8,6 +8,7 @@ import axios from "axios";
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [token, setToken] = useState(null);
   console.log("form state", email, password);
 
   const onFormSubmit = async (event) => {
@@ -19,6 +20,7 @@ const LoginPage = () => {
         password: password,
       });
       console.log("this is my response", response);
+      setToken(response.data.token);
     } catch (e) {
       console.log(e.message);
     }
@@ -40,6 +42,7 @@ const LoginPage = () => {
         </div>
         <button type="submit">SUBMIT</button>
       </form>
+      {token}
     </div>
   );
 };
